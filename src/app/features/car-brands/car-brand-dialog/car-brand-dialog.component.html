@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Edit Car Brand' : 'Add Car Brand' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Brand</mat-label>
+    <input matInput formControlName="brand" />
+    <mat-error *ngIf="form.get('brand')?.invalid">Brand is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Model</mat-label>
+    <input matInput formControlName="model" />
+    <mat-error *ngIf="form.get('model')?.invalid">Model is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Start Year</mat-label>
+    <input type="number" matInput formControlName="manufacturingStartYear" />
+    <mat-error *ngIf="form.get('startYear')?.invalid">Start Year is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>End Year</mat-label>
+    <input type="number" matInput formControlName="manufacturingEndYear" />
+    <mat-error *ngIf="form.get('endYear')?.invalid">End Year is required</mat-error>
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="form.invalid">
+      {{ isEditMode ? 'Update' : 'Save' }}
+    </button>
+  </div>
+</form>

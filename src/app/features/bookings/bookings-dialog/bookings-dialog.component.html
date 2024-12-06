@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Edit Booking' : 'Add Booking' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+  <!-- Client -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Client</mat-label>
+    <mat-select formControlName="clientId" required>
+      <mat-option *ngFor="let client of clients" [value]="client.id">
+        {{ client.fullName }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.get('clientId')?.invalid">Client is required</mat-error>
+  </mat-form-field>
+
+  <!-- Office -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Office</mat-label>
+    <mat-select formControlName="officeId" required>
+      <mat-option *ngFor="let office of offices" [value]="office.id">
+        {{ office.city }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.get('officeId')?.invalid">Office is required</mat-error>
+  </mat-form-field>
+
+  <!-- Car -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Car</mat-label>
+    <mat-select formControlName="carId" required>
+      <mat-option *ngFor="let car of cars" [value]="car.id">
+        {{ car.model }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.get('carId')?.invalid">Car is required</mat-error>
+  </mat-form-field>
+
+  <!-- Status -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="Pending">Pending</mat-option>
+      <mat-option value="Paid">Paid</mat-option>
+      <mat-option value="Canceled">Canceled</mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.get('status')?.invalid">Status is required</mat-error>
+  </mat-form-field>
+
+  <!-- Start Date -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Start Date</mat-label>
+    <input matInput [matDatepicker]="startPicker" formControlName="start" />
+    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+    <mat-datepicker #startPicker></mat-datepicker>
+    <mat-error *ngIf="form.get('start')?.invalid">Start date is required</mat-error>
+  </mat-form-field>
+
+  <!-- End Date -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>End Date</mat-label>
+    <input matInput [matDatepicker]="endPicker" formControlName="end" />
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
+    <mat-error *ngIf="form.get('end')?.invalid">End date is required</mat-error>
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="form.invalid">
+      {{ isEditMode ? 'Update' : 'Save' }}
+    </button>
+  </div>
+</form>

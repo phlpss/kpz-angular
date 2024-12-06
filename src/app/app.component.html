@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span appHighlight="lightblue">KPZ App</span>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/clients" routerLinkActive="active-link">Clients</a>
+    <a mat-button routerLink="/car-brands" routerLinkActive="active-link">Car Brands</a>
+    <a mat-button routerLink="/bookings" routerLinkActive="active-link">Bookings</a>
+    <a mat-button routerLink="/offices" routerLinkActive="active-link">Offices</a>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
