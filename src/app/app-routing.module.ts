@@ -15,7 +15,7 @@ export const routes: Routes = [
       import('./features/bookings/bookings.module').then((m) => m.BookingsModule),
   },
   {path: 'offices', component: OfficesComponent},
-  {path: '', redirectTo: '/clients', pathMatch: 'full'}, // Default route
+  {path: '', redirectTo: '/clients', pathMatch: 'full'},
   {path: '**', redirectTo: '/clients'}, // Fallback route
 ];
 

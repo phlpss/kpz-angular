@@ -11,17 +11,16 @@ export const RetryInterceptor: HttpInterceptorFn = (
   req: HttpRequest<any>,
   next: HttpHandlerFn
 ): Observable<HttpEvent<any>> => {
-  const retryCount = 3; // Number of retries
+  const retryCount = 3;
 
   return next(req).pipe(
-    retry(retryCount), // Retry failed requests
+    retry(retryCount),
     catchError((error: HttpErrorResponse) => {
       console.error(`HTTP error after ${retryCount} retries:`, error.message);
 
-      // Optionally display a user-friendly error notification
       alert(`Failed to process request: ${error.message}`);
 
-      return throwError(() => error); // Re-throw the error
+      return throwError(() => error);
     })
   );
 };

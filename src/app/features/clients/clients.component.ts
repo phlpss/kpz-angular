@@ -52,7 +52,7 @@ export class ClientsComponent implements OnInit {
         dialogRef.afterClosed().subscribe((result) => {
             if (result) {
               this.dataService.addClient(result).subscribe(() => {
-                    this.getUsers(); // Refresh table after adding
+                    this.getUsers();
                 });
             }
         });

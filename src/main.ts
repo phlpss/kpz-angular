@@ -12,7 +12,7 @@ import {RetryInterceptor} from './app/shared/retry.interceptor';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(routes), // Set up routing
+    provideRouter(routes),
     provideHttpClient(withInterceptors([RetryInterceptor])),
     importProvidersFrom(BrowserAnimationsModule),
     importProvidersFrom(MatNativeDateModule),

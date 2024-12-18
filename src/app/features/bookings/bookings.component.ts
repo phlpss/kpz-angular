@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.css'],
+  standalone: false
   // imports: [
   //   CommonModule,
   //   MatTableModule,
